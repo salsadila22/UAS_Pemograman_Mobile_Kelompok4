@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:keliling_pontianak/firebase_options.dart';
 
 void main() {
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
+//Name of your application's route
 enum AppRoute {
   loginScreen,
   homeScreen,
@@ -17,6 +23,7 @@ enum AppRoute {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  //Routes for your Application
   final GoRouter router = GoRouter(
     initialLocation: '/',
     debugLogDiagnostics: false,
