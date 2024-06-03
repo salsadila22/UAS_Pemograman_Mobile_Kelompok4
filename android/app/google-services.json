@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "462385155135",
+    "project_id": "uas-pmob-7966b",
+    "storage_bucket": "uas-pmob-7966b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462385155135:android:6f7b268a8eda72cff23c8a",
+        "android_client_info": {
+          "package_name": "com.example.keliling_pontianak"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDngnG3BRnUK7vUHu0HU8GNw1w__oHwWgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
