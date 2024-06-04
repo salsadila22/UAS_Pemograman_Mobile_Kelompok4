@@ -44,7 +44,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
-        backgroundColor: const Color(0xFFBDFF00),
         centerTitle: true,
         title: Text(
           "Keliling Pontianak",
@@ -93,7 +92,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: 10.h,
                     horizontal: 10.w,
                   ),
                   decoration: const BoxDecoration(
@@ -102,18 +100,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextField(
-                        obscureText: obsecure,
-                        controller: passwordController,
-                        decoration: const InputDecoration.collapsed(
-                          hintText: "Masukkan password",
+                      Expanded(
+                        child: TextField(
+                          obscureText: obsecure,
+                          controller: passwordController,
+                          decoration: const InputDecoration.collapsed(
+                            hintText: "Masukkan password",
+                          ),
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            obsecure = !obsecure;
+                          });
+                        },
                         icon: obsecure
-                            ? const Icon(Icons.remove_red_eye)
-                            : const Icon(Icons.remove_red_eye_sharp),
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
                       )
                     ],
                   ),
@@ -163,6 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       result.fold(
         (l) => setState(() {
+          isLoading = true;
           errorMessage = l.message;
         }),
         (r) => context.pushReplacementNamed(AppRoute.homeScreen.name),

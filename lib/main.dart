@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:keliling_pontianak/feature/login/presentation/pages/login_screen.dart';
+import 'package:keliling_pontianak/feature/select_flow/presentation/pages/guide_screen.dart';
 import 'package:keliling_pontianak/feature/select_flow/presentation/pages/home_screen.dart';
+import 'package:keliling_pontianak/feature/select_flow/presentation/pages/location_screen.dart';
 import 'package:keliling_pontianak/firebase_options.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
@@ -18,7 +20,6 @@ void main() {
 enum AppRoute {
   loginScreen,
   homeScreen,
-  destinationScreen,
   locationScreen,
   guideScreen,
 }
@@ -29,7 +30,6 @@ class MyApp extends StatelessWidget {
   //Routes for your Application
   final GoRouter router = GoRouter(
     initialLocation: '/',
-    debugLogDiagnostics: false,
     routes: [
       GoRoute(
         path: '/',
@@ -49,14 +49,20 @@ class MyApp extends StatelessWidget {
             path: 'location',
             name: AppRoute.locationScreen.name,
             builder: (context, state) {
-              return Container();
+              final param = state.extra as LocationScreenParam;
+              return LocationScreen(
+                location: param,
+              );
             },
             routes: [
               GoRoute(
                 path: 'guide',
                 name: AppRoute.guideScreen.name,
                 builder: (context, state) {
-                  return Container();
+                  final param = state.extra as GuideScreenParam;
+                  return GuideScreen(
+                    guide: param,
+                  );
                 },
               )
             ],
