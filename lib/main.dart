@@ -2,9 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:keliling_pontianak/feature/login/presentation/pages/login_screen.dart';
+import 'package:keliling_pontianak/feature/select_flow/presentation/pages/home_screen.dart';
 import 'package:keliling_pontianak/firebase_options.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -32,14 +35,14 @@ class MyApp extends StatelessWidget {
         path: '/',
         name: AppRoute.loginScreen.name,
         builder: (context, state) {
-          return Container();
+          return const LoginScreen();
         },
       ),
       GoRoute(
         path: '/home',
         name: AppRoute.homeScreen.name,
         builder: (context, state) {
-          return Container();
+          return const HomeScreen();
         },
         routes: [
           GoRoute(
@@ -71,6 +74,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routeInformationParser: router.routeInformationParser,
         routeInformationProvider: router.routeInformationProvider,
         routerDelegate: router.routerDelegate,
