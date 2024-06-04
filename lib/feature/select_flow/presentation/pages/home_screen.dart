@@ -96,10 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Positioned(
             left: -150.w,
-            bottom: -100.h,
+            bottom: -75.h,
             child: Image.asset(
               "assets/images/login/tugu bambu-login.png",
-              scale: 1.2,
+              scale: 1.1,
             ),
           ),
           Container(
